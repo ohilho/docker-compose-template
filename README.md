@@ -1,7 +1,7 @@
 # docker-compose-template
 docker compose github repository template 
 
-## introduction
+## Introduction
 ### Directory structure
 
 - ./copy - all files under this directory will be copied to the /root/
