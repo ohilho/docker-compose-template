@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  pytorch:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-dev
+      args: 
+      - SSH_KEY_PATH=${SSH_KEY_PATH}
+    runtime: nvidia
+    ports:
+      - "${PORT_SSH}:22"
+    command: 
+      - /root/run.sh
+    volumes:
+      - source:/repos
+    ipc: "host"
+    restart: always
+  
+volumes:
+  source:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${HOME}/repos
